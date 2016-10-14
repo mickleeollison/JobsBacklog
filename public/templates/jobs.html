@@ -1,0 +1,166 @@
+<div>
+
+	<button><a href="#" ng-click="add()">Add A job</a></button>
+	<div class="table table-responsive" ng-show="viewing">
+
+		<h3>Manage your Job Search one job at a time</h3>
+
+		<table class="table table-hover ">
+			<tr>
+				<th>Date Added</th>
+				<th>End Date for Job Application</th>
+				<th>Position</th>
+				<th>Company</th>
+				<th>Location</th>
+				<th>Comment</th>
+				<th>Applied</th>
+				<th>Response</th>
+			</tr>
+			<tbody id="tabledata">
+				<tr ng-repeat="j in jobs">
+					<td>{{j.dateAdded | date}}</td>
+					<td>{{j.dateExpires | date}}</td>
+					<td>{{j.position}}</td>
+					<td>{{j.company}}</td>
+					<td>{{j.location}}</td>
+					<td>{{j.comment}}</td>
+					<td>{{j.applied.applied}} on {{j.dateApplied | date}}</td>
+					<td>{{j.response.response}} on {{j.dateResponded | date}}</td>
+					<td><a href="#" ng-click="update(j._id)">Update this Job</a></td>
+					<td><a href="#" ng-click="deleteJob(j._id)">Remove this Job</a></td>
+				</tr>
+			</tbody>
+		</table>
+
+
+	</div>
+	<!-- Div CREATE -->
+	<div id="createDiv" ng-show="adding">
+		<div>
+
+			<div>
+				<div>
+					<button type="button" class="close closeit" ng-click="view()">&times;</button>
+					<h3>Add a new Job</h3>
+				</div>
+				<div>
+					<div>
+						<div>
+							<label for="dateExpires">Job no Longer Availiable Date</label> 
+							<input id="dateExpires" type="date" value="" ng-model="dateExpires" />
+						</div>
+						<div>
+							<label for="jobPosition">Position</label> <input id="position" type="text"
+								value="" ng-model="position" />
+						</div>
+						<div>
+							<label for="company">Company</label> <input id="company"
+								type="text" value="" ng-model="company" />
+						</div>
+						<div>
+							<label for="location">Location</label> <input id="location"
+								type="text" value="" ng-model="location" />
+						</div>
+						<div>
+							<label for="company">Comment</label> <input id="comment"
+								type="text" value="" ng-model="comment" />
+						</div>
+						<div>
+							<label for="appliedType">Applied?</label> 
+							<select
+								class="applied" ng-model="appliedId" ng-change="addAppliedDateField()">
+								<option ng-repeat="a in appliedTypes" ng-value="a._id">{{a.applied}}</option>
+							</select>
+							<div ng-show="addAppliedDate">
+								<label for="dateApplied">Date you applied for Job</label> 
+								<input id="dateApplied" type="date" value="" ng-model="dateApplied" />
+							</div>
+						</div>
+						<div>
+							<label for="responseType">Response?</label>
+							 <select
+								class="response" ng-model="responseId" ng-change="addResponseDateField()">
+								<option ng-repeat="r in responses" ng-value="r._id">{{r.response}}</option>
+							</select>
+							<div ng-show="addResponseDate">
+								<label for="dateResponded">Date Hiring Manger Responded</label> 
+								<input id="dateResponded" type="date" value="" ng-model="dateResponded" />
+							</div>
+						</div>
+					</div>
+				</div>
+				<button id="addjob" type="button" ng-click="postJob()">Add</button>
+
+				<div class="modal-footer">
+					<div class="errors1"></div>
+					<button ng-click="view(); clearForm()" type="button"
+						class="btn btn-default closeit">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<!-- Div UPDATE -->
+	<div id="updateDiv" ng-show="updating">
+			<div>
+				<div>
+					<button type="button" class="close closeit" ng-click="view()">&times;</button>
+					<h3>Make Changes to One of Your Jobs</h3>
+				</div>
+				<div>
+					<div>
+
+						<div>
+							<label for="jobPosition">Position</label> <input id="position" type="text"
+								value="" ng-model="positionU" />
+						</div>
+						<div>
+							<label for="company">Company</label> <input id="company"
+								type="text" value="" ng-model="companyU" />
+						</div>
+						<div>
+							<label for="location">Location</label> <input id="location"
+								type="text" value="" ng-model="locationU" />
+						</div>
+						<div>
+							<label for="company">Comment</label> <input id="comment"
+								type="text" value="" ng-model="commentU" />
+						</div>
+						<div>
+							<label for="appliedType">Applied?</label> 
+							<div>Currently: {{appliedShow}}</div>
+							<select
+								ng-model="appliedIdU" ng-change="addAppliedDateField()">
+								<option ng-repeat="a in appliedTypes" ng-value="a._id">{{a.applied|date}}</option>
+							</select>
+							<div ng-show="addAppliedDate">
+								<label for="dateApplied">Date you applied for Job</label> 
+								<input id="dateApplied" type="date" value="" ng-model="dateAppliedU" />
+							</div>
+						</div>
+						<div>
+							<label for="responseType">Response?</label>
+							<div>Currently: {{respondedShow|date}}</div>
+							 <select
+								ng-model="responseIdU" ng-change="addResponseDateField()">
+								<option ng-repeat="r in responses" ng-value="r._id">{{r.response}}</option>
+							</select>
+							<div ng-show="addResponseDate">
+								<label for="dateResponded">Date Hiring Manger Responded</label> 
+								<input id="dateResponded" type="date" value="" ng-model="dateRespondedU" />
+							</div>
+						</div>
+				</div>
+				<button id="addjob" type="button" ng-click="putJob(jobSelected)">Add</button>
+
+				<div class="modal-footer">
+					<div class="errors1"></div>
+					<button ng-click="view(); clearForm()" type="button"
+						class="btn btn-default closeit">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</div>
