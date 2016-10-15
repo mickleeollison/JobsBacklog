@@ -2,16 +2,43 @@
 @errorColor: red;
 @imageWidth: 40em;
 @imageHeight: 25em;
-@crudColor: blue;
-@responsiveChange: 800px;
+@crudColor: white;
+@responsiveChange: 480px;
 @textColor: black;
+
+.index { 
+  
+} 
+
+table.center, .title {
+	
+    margin-left:auto; 
+    margin-right:auto;
+  }
+
+table{
+	background: rgba(250,250,250,.7);
+}
+
+.back{
+	background: url("../images/hard-work.jpg") no-repeat center center fixed; 
+	-webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover; 
+  font-size: 2em;
+}
 
 .right {
 	position: absolute;
-	right: 150px;
+	right: 1.5em;
 	top: 2px; 
 }
-
+.add{
+	position: absolute;
+	top: 2px; 
+	right:35em;
+}
 .center_drink {
 	position: absolute;
 	right: 5%;
@@ -21,6 +48,17 @@
 	float: left;
 	color: @errorColor;
 	text-align: left;
+	border-color:black;
+}
+
+button{
+	background-color: black;
+	color:white;
+	width:7em;
+	height:3em;
+}
+a{ 
+	text-decoration: none;
 }
  
 .samerow {
@@ -35,19 +73,10 @@ body {
 	    font-size: 1em;
 	    margin: 5em;
 	    border-radius:10px;
+		background: rgba(20,20,20,0.6)
     }
 }
 
-.homephoto {
-	display: block;
-	margin: 0 auto;
-	width: @imageWidth;
-	height: @imageHeight;
-}
-
-img {
-	.homephoto
-}
 
 .pageText{
     font-family: "Times New Roman", Times, serif;
@@ -80,15 +109,9 @@ h1, h3, h2 {
 }
 
 p {
-	pageText
 	margin: 2em;
 }
 
-.table {
-	width: 90%;
-	font-size: 1em;
-	margin: 5em;
-}
 
 td {
 	margin: .5em;
@@ -107,9 +130,51 @@ label, input, button, table, select {
 }
 
 @media screen and (max-width: @responsiveChange) {
-	.right {
-		display: none;
-	}
+	.back{
+	background: url("../images/hard-work.jpg") no-repeat center center fixed; 
+	-webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover; 
+  font-size: 2em;
+}
+
+.right {
+	position: static;
+
+}
+.add{
+	position: static;
+}
+.center_drink {
+	position: static;
+	right: 5%;
+}
+ 
+.errors1, .errors2, .errors3 {
+	float: left;
+	color: @errorColor;
+	text-align: left;
+	border-color:black;
+}
+
+button{
+	background-color: black;
+	color:white;
+	width:10em;
+	height:5em;
+}
+body {
+	background-color: @backgroundColor;
+    #createDiv, #removeDiv, #updateDiv {
+	    background-color: @crudColor;
+	    width: 100%;
+	    font-size: 1em;
+	    margin: 0em;
+	    border-radius:10px;
+		background: rgba(20,20,20,0.6)
+    }
+}
 }
 
 @media screen and (max-width: @responsiveChange) {

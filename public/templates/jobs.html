@@ -1,11 +1,11 @@
-<div>
+<div class='index'>
 
-	<button><a href="#" ng-click="add()">Add A job</a></button>
+	<button class='add' ng-click="add()">Add A job</button>
 	<div class="table table-responsive" ng-show="viewing">
 
-		<h3>Manage your Job Search one job at a time</h3>
+		<h5 class='title'>Manage your Job Search one job at a time</h5>
 
-		<table class="table table-hover ">
+		<table class="table table-hover center">
 			<tr>
 				<th>Date Added</th>
 				<th>End Date for Job Application</th>
@@ -15,6 +15,8 @@
 				<th>Comment</th>
 				<th>Applied</th>
 				<th>Response</th>
+				<th>Click to Update</th>
+				<th>Click to Remove</th>
 			</tr>
 			<tbody id="tabledata">
 				<tr ng-repeat="j in jobs">
@@ -41,7 +43,7 @@
 			<div>
 				<div>
 					<button type="button" class="close closeit" ng-click="view()">&times;</button>
-					<h3>Add a new Job</h3>
+					<h5>Add a new Job</h5>
 				</div>
 				<div>
 					<div>
@@ -105,8 +107,8 @@
 	<div id="updateDiv" ng-show="updating">
 			<div>
 				<div>
-					<button type="button" class="close closeit" ng-click="view()">&times;</button>
-					<h3>Make Changes to One of Your Jobs</h3>
+					<button  type="button" class="close closeit" ng-click="view()">&times;</button>
+					<h5>Make Changes to One of Your Jobs</h5>
 				</div>
 				<div>
 					<div>

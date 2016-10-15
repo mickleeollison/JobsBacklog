@@ -13,18 +13,8 @@
     <link rel="stylesheet" type="text/css" href="css/angular-toastr.css" />
 	<script type="text/javascript" src="js/angular-toastr.tpls.js"></script>
 </head>
-<body ng-app="myApp">
-	<nav class="navbar navbar-inverse">
-  		<div class="container-fluid">
-   		 <div class="navbar-header">
-     		 <a class="navbar-brand" href="#">Jobs Backlog</a>
-    		</div>
-    	    <div>
-     		 <ul class="nav navbar-nav">
-        		<li><a href="/logout"><button id = "logout_button"> Logout</button></a></li>
-      		</ul>
-    	   </div>
-  		</div>
-	</nav>
+<body ng-app="myApp" class='back'>
+	<h4>Jobs Backlog</h4>
+	<a href="/logout" class='right'><button id = "logout_button"> Logout</button></a>
 	<ui-view></ui-view>
 </body>
